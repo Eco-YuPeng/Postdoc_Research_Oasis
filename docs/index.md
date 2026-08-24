@@ -2,9 +2,8 @@
 
 This is a template for an ESIIL postdoctoral researcher.
 
-## Postdoc Project Title
+## Unlocking field-scale cover crop dynamics through deep learning-driven satellite harmonization 
 
-Postdoc Project Title
 
 This postdoc project runs as a single system: a GitHub repository where environmental data science is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
 
@@ -122,7 +121,7 @@ Working Phase: Project setup
 
 ## People
 
-Replace this table with names, roles, institutions, and responsibilities so new collaborators know who is doing what.
+This project is mainly running by Yu Peng, and advised by Dr. Timothy Bowles (Berkeley) , Dr. Cibele Hummel do Amaral (ESIIL), and Dr. Lixin Wang (Indiana Univ Indy) eplace this table with names, roles, institutions, and responsibilities so new collaborators know who is doing what.
 
 Related landmark: PD-A People and roles.
 
