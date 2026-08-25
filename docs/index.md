@@ -1,8 +1,9 @@
 # Home
 
-This is a template for an ESIIL postdoctoral researcher.
+Yu Peng's research oasis
+Welcome! I am a Postdoctoral Associate at the Environmental Data Science Innovation & Impact Lab (ESIIL) at CU Boulder. My research integrates multi-scale field observations, remote sensing fusion, and spatial-temporal modeling to quantify agricultural conservation practices and soil health metrics.
 
-## Postdoc Project Title
+## Unlocking field-scale cover crop dynamics through deep learning-driven satellite harmonization
 
 Postdoc Project Title
 
@@ -10,16 +11,16 @@ This postdoc project runs as a single system: a GitHub repository where environm
 
 As the project progresses, the repository becomes the reproducible record of the research, and the website becomes the public report.
 
-[Edit this homepage in GitHub](https://github.com/CU-ESIIL/Postdoc_OASIS/edit/main/docs/index.md){ .md-button .md-button--secondary }
-[Open the GitHub repository](https://github.com/CU-ESIIL/Postdoc_OASIS){ .md-button }
+[Edit this homepage in GitHub](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/edit/main/docs/index.md){ .md-button .md-button--secondary }
+[Open the GitHub repository](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS){ .md-button }
 
 ![Placeholder image for the homepage overview][slot-hero]{ .homepage-hero }
 
 --8<-- "_generated/slot_notes/hero.md"
 
-## Postdoc Project Abstract
+## Project Abstract
 
-Add an overview of the postdoc project, the research question, the communities or systems involved, and the outputs the researcher expects to produce. This can mirror a project description, fellowship summary, or ESIIL profile.
+Field-scale monitoring of cover crops is vital for assessing soil organic carbon (SOC) sequestration and greenhouse gas (GHG) dynamics across agroecosystems. This project leverages deep learning architectures to harmonize multi-sensor satellite observations (e.g., PlanetScope, Sentinel-2, Landsat), enabling high-resolution tracking of cover crop establishment, biomass accumulation, and termination dates across broad geographic domains.
 
 ## Start Here
 
