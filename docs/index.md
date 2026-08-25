@@ -12,7 +12,7 @@ This postdoc project runs as a single system: a GitHub repository where environm
 As the project progresses, the repository becomes the reproducible record of the research, and the website becomes the public report.
 
 [Edit this homepage in GitHub](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/edit/main/docs/index.md){ .md-button .md-button--secondary }
-[Open the GitHub repository](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS){ .md-button }
+[Open the GitHub repository](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/doc/main/Index.md){ .md-button }
 
 ![Placeholder image for the homepage overview][slot-hero]{ .homepage-hero }
 
