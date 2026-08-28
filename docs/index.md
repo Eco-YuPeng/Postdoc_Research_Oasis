@@ -123,17 +123,15 @@ Working Phase: Project setup
 
 ## People
 
-Replace this table with names, roles, institutions, and responsibilities so new collaborators know who is doing what.
-
-Related landmark: PD-A People and roles.
-
 ![Placeholder image representing collaboration and project identity][slot-group-photo]{ .section-image }
 
 --8<-- "_generated/slot_notes/group-photo.md"
 
 | Name | Role | Institution | Responsibilities |
 | --- | --- | --- | --- |
-| Name | Postdoctoral researcher | Institution | Responsibilities |
-| Name | Mentor or collaborator | Institution | Responsibilities |
+| Yu Peng | Postdoc | ESIIL | Hands-on research execution |
+| Timothy Bowles | Mentor | UC Berkeley | Guidance on agroecology and academic development |
+| Cibele Amaral | Supervisor | ESIIL | Oversee daily research operations and remote sensing integration |
+| Lixin Wang | Phd Advisor | IU Indianapolis | Offer long-term research continuity and hydroecology expertise |
 
 --8<-- "_generated/image_slots.md"
