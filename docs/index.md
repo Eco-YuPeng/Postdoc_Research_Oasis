@@ -17,7 +17,7 @@ Field-scale monitoring of cover crops is vital for assessing soil organic carbon
 
 1. **Synthesizing ground truths via LLMs.** Generate a training and validation database of cover crop presence, timing, and species by combining field records, producer surveys, and LLM-assisted extraction from the published literature. *(PD-C)*
    
-2. **Sensor harmonization.** Fuse multi-source optical, thermal, and earth-embedding observations into a consistent, gap-filled field-scale time series. *(Powered by the [FireRX ML model]([https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS](https://github.com/j-gams/firerx_ml), credited to Dr. Cibele Amaral.)*
+2. **Sensor harmonization.** Fuse multi-source optical, thermal, and earth-embedding observations into a consistent, gap-filled field-scale time series. *(Powered by the [FireRX ML model](https://github.com/j-gams/firerx_ml), credited to Dr. Cibele Amaral.)*
  
 3. **Phenology retrieval.** Train and evaluate AI models that retrieve establishment, peak biomass, and termination dates at the field level. 
    
