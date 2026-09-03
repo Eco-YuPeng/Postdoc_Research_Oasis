@@ -1,6 +1,10 @@
 # Work Plan
 
+Landmark: all landmarks apply here, depending on the phase. See the [landmark guide](instructions/postdoc-landmarks.md).
+
 ## Onboarding
+
+Landmark: PD-A People and roles; PD-B Question and scope.
 
 - Confirm project goals and research questions
 - Identify mentors, collaborators, and communication channels
@@ -9,6 +13,8 @@
 
 ## Project Scoping
 
+Landmark: PD-B Question and scope; PD-C Data and access.
+
 - Project summary: [link]
 - Research question: [link]
 - Data inventory: [link]
@@ -16,6 +22,8 @@
 - Mentor or collaborator notes: [link]
 
 ## Active Research
+
+Landmark: PD-D Methods and workflows.
 
 Use this section to summarize current analysis, meetings, writing, or implementation work. Keep the summary short enough that a new collaborator can quickly understand what changed and what needs attention next.
 
@@ -26,12 +34,16 @@ Use this section to summarize current analysis, meetings, writing, or implementa
 
 ## Synthesis And Writing
 
+Landmark: PD-E Results and synthesis.
+
 - Results summary: [link]
 - Figures or tables: [link]
 - Manuscript, report, or product draft: [link]
 - Reuse and citation notes: [link]
 
 ## Outputs And Handoff
+
+Landmark: PD-F Outputs and handoff.
 
 For outputs from the postdoc project, list the full authors or contributors for each product. If you list a paper, presentation, dataset, dashboard, package, report, or educational material, include enough information that future readers can understand who contributed and how to cite or reuse it.
 
@@ -46,6 +58,6 @@ For outputs from the postdoc project, list the full authors or contributors for 
 
 ### Outputs Gallery
 
---8<-- "_generated/galleries/root/outputs/index.md"
+--8<-- "_generated/galleries/child/outputs/index.md"
 
 --8<-- "_generated/image_slots.md"
