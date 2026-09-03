@@ -25,7 +25,7 @@ Field-scale monitoring of cover crops is vital for assessing soil organic carbon
 
 
 
-## Track this research
+## Research Resources
 
 The repository has two connected layers. Top-level files configure the project and its automation. The `docs/` folder contains the website content. `mkdocs.yml` tells MkDocs how to turn that content into the public site. Analysis folders hold the working scientific materials that generate the results shown on the website.
 
@@ -54,9 +54,9 @@ Use this section to show how the project gets started without manually editing i
 
 | Name | Role | Institution | Responsibilities |
 |------------------|------------------|------------------|------------------|
-| Yu Peng | Postdoc Researcher | ESIIL | Project lead: data fusion, model development, analysis, and public reporting |
-| Cibele Amaral | Project Supervisor | ESIIL | Oversees daily research operations and remote sensing integration |
-| Timothy Bowles | Academic Mentor | UC Berkeley | Guidance on agroecology and academic development |
-| Lixin Wang | Advisory Expert | IU Indianapolis | Long-term research continuity and hydroecology expertise |
+| [Yu Peng](https://esiil.org/about/yu-peng) | Postdoc Researcher | ESIIL | Project lead: data fusion, model development, analysis, and public reporting |
+| [Cibele Amaral](https://cires.colorado.edu/people/cibele-hummel-do-amaral) | Project Supervisor | ESIIL | Oversees daily research operations and remote sensing integration |
+| [Timothy Bowles](https://vcresearch.berkeley.edu/faculty/timothy-bowles) | Academic Mentor | UC Berkeley | Guidance on agroecology and academic development |
+| [Lixin Wang](https://science.indianapolis.iu.edu/people-directory/people/wang-lixin.html) | Advisory Expert | IU Indianapolis | Long-term research continuity and hydroecology expertise |
 
 --8<-- "_generated/image_slots.md"
