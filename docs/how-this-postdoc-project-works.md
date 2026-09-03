@@ -28,7 +28,7 @@
 
 ### Data Gallery
 
---8<-- "_generated/galleries/root/data/index.md"
+--8<-- "_generated/galleries/child/data/index.md"
 
 ## Code
 
@@ -43,10 +43,10 @@
 
 ### Methods Gallery
 
---8<-- "_generated/galleries/root/methods/index.md"
+--8<-- "_generated/galleries/child/methods/index.md"
 
 ### Exploration Gallery
 
---8<-- "_generated/galleries/root/exploration/index.md"
+--8<-- "_generated/galleries/child/exploration/index.md"
 
 --8<-- "_generated/image_slots.md"
