@@ -2,14 +2,6 @@
 
 ## Unlocking field-scale cover crop dynamics through deep learning-driven satellite harmonization
 
-This is a postdoc research project led by Dr. Yu Peng, supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). The aim of this project is to integrate multi-scale field observations, satellite data fusion, and spatial-temporal modeling to map cover cropping across the continental US. and to quantify the ecosystem services that agricultural conservation delivers. 
-
-Since, it runs as an open-science system: a GitHub repository where this project is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
-
-The Repo and the website can acceess via following links:
-
-[Edit this homepage in GitHub](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS/edit/main/docs/index.md){.md-button .md-button--secondary} [Open the GitHub repository](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS){.md-button}
-
 ![Homepage overview image][slot-hero]
 
 --8<-- "_generated/slot_notes/hero.md"
@@ -18,16 +10,25 @@ The Repo and the website can acceess via following links:
 
 Field-scale monitoring of cover crops is vital for assessing soil organic carbon (SOC) sequestration and greenhouse gas (GHG) dynamics across agroecosystems, yet reliable wall-to-wall information at that scale remains largely unavailable. Existing products are limited by coarse resolution, sparse ground truth, and inconsistent revisit across sensors, so the timing of establishment and termination — the part that matters most for carbon and nitrogen outcomes — is rarely resolved. This project leverages deep learning architectures to harmonize multi-sensor satellite observations (PlanetScope, Sentinel-2, Landsat, and thermal data from ECOSTRESS), enabling high-resolution tracking of cover crop establishment, biomass accumulation, and termination dates across broad geographic domains. The resulting maps and time series are designed to feed directly into biogeochemical and policy-relevant assessments of agricultural conservation practice.
 
-Landmark: PD-B Question and scope.
+This is a postdoc research project led by Dr. Yu Peng, supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). The aim of this project is to integrate multi-scale field observations, satellite data fusion, and spatial-temporal modeling to map cover cropping across the continental US. and to quantify the ecosystem services that agricultural conservation delivers. 
+
+Since, it runs as an open-science system: a GitHub repository where this project is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
+
+The Repo and the website can acceess via following links:
+
+[Open the GitHub repository](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS){.md-button}
 
 ## Research Objectives
 
-1. **Ground truth at scale.** Generate a training and validation database of cover crop presence, timing, and species by combining field records, producer surveys, and LLM-assisted extraction from the published literature. *(PD-C)*
-2. **Sensor harmonization.** Fuse multi-source optical, thermal, and earth-embedding observations into a consistent, gap-filled field-scale time series. *(PD-D)*
-3. **Phenology retrieval.** Train and evaluate deep learning models that retrieve establishment, peak biomass, and termination dates at the field level. *(PD-D, PD-E)*
+1. **Synthesizing ground truths via LLMs.** Generate a training and validation database of cover crop presence, timing, and species by combining field records, producer surveys, and LLM-assisted extraction from the published literature. *(PD-C)*
+   
+2. **Sensor harmonization.** Fuse multi-source optical, thermal, and earth-embedding observations into a consistent, gap-filled field-scale time series. *powered by Dr. Cibele Amaral*
+ 
+3. **Phenology retrieval.** Train and evaluate AI models that retrieve establishment, peak biomass, and termination dates at the field level. *(PD-D, PD-E)*
+   
 4. **Continental mapping and ecosystem services.** Scale the retrieval across the continental US and link the resulting maps to SOC and GHG outcomes for conservation assessment. *(PD-E, PD-F)*
 
-[Use the landmark guide](instructions/postdoc-landmarks.md){.md-button .md-button--secondary}
+
 
 ## Start Here
 
@@ -39,7 +40,6 @@ New to the project? These five steps orient a collaborator in about fifteen minu
 4. Run or adapt one analysis workflow from the repository, and record what you decided and why.
 5. Commit figures, tables, notes, and summaries so the work stays versioned and reproducible.
 
-Landmark: PD-B Question and scope.
 
 [Plan the work](work-plan.md){.md-button} [Document data and resources](how-this-postdoc-project-works.md#data){.md-button .md-button--secondary} [Set community expectations](community-care.md){.md-button .md-button--secondary}
 
