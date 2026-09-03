@@ -1,38 +1,32 @@
-# Home
-
-Yu Peng's research oasis
-Welcome! I am a Postdoctoral Associate at the Environmental Data Science Innovation & Impact Lab (ESIIL) at CU Boulder. My research integrates multi-scale field observations, remote sensing fusion, and spatial-temporal modeling to quantify agricultural conservation practices and soil health metrics.
+# Tracking cover crop at scale
 
 ## Unlocking field-scale cover crop dynamics through deep learning-driven satellite harmonization
 
-Postdoc Project Title
-
-This postdoc project runs as a single system: a GitHub repository where environmental data science is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
+This is a postdoc research project led by Dr. Yu Peng supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). 
+This project aims t integrates multi-scale field observations, remote sensing fusion, and spatial-temporal modeling to map the US. continetial-boudaries of cover cropping and its associated ecosystem services  quantify agricultural conservation.
+Runs as a open-science system: a GitHub repository where environmental data science is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
 
 As the project progresses, the repository becomes the reproducible record of the research, and the website becomes the public report.
 
-[Edit this homepage in GitHub](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/edit/main/docs/index.md){ .md-button .md-button--secondary }
-[Open the GitHub repository](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/doc/main/Index.md){ .md-button }
+[Edit this homepage in GitHub](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/edit/main/docs/index.md){.md-button .md-button--secondary} [Open the GitHub repository](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/doc/main/Index.md){.md-button}
 
-![Placeholder image for the homepage overview][slot-hero]{ .homepage-hero }
+![Placeholder image for the homepage overview][slot-hero]
 
---8<-- "_generated/slot_notes/hero.md"
+--8\<-- "\_generated/slot_notes/hero.md"
 
 ## Project Abstract
 
-Field-scale monitoring of cover crops is vital for assessing soil organic carbon (SOC) sequestration and greenhouse gas (GHG) dynamics across agroecosystems. This project leverages deep learning architectures to harmonize multi-sensor satellite observations (e.g., PlanetScope, Sentinel-2, Landsat), enabling high-resolution tracking of cover crop establishment, biomass accumulation, and termination dates across broad geographic domains.
+Field-scale monitoring of cover crops is vital for assessing soil organic carbon (SOC) sequestration and greenhouse gas (GHG) dynamics across agroecosystems.Yet, understanding at scale remians blank... This project leverages deep learning architectures to harmonize multi-sensor satellite observations (e.g., PlanetScope, Sentinel-2, Landsat), enabling high-resolution tracking of cover crop establishment, biomass accumulation, and termination dates across broad geographic domains.
 
 ## Start Here
 
-1. Replace the title and summary with the project question, scientific or community need, and main outputs the postdoc expects to produce.
-2. Add or link datasets, working documents, references, and mentor/collaborator resources.
-3. Run or adapt at least one analysis workflow and record decisions in the repository.
-4. Commit figures, tables, notes, and summaries so the work is versioned and reproducible.
-5. Use the website to share progress, methods, and results with collaborators and community audiences.
+1.  Replace the title and summary with the project question, scientific or community need, and main outputs the postdoc expects to produce.
+2.  Add or link datasets, working documents, references, and mentor/collaborator resources.
+3.  Run or adapt at least one analysis workflow and record decisions in the repository.
+4.  Commit figures, tables, notes, and summaries so the work is versioned and reproducible.
+5.  Use the website to share progress, methods, and results with collaborators and community audiences.
 
-[Plan the work](work-plan.md){ .md-button }
-[Document data and resources](how-this-postdoc-project-works.md#data){ .md-button .md-button--secondary }
-[Set community expectations](community-care.md){ .md-button .md-button--secondary }
+[Plan the work](work-plan.md){.md-button} [Document data and resources](how-this-postdoc-project-works.md#data){.md-button .md-button--secondary} [Set community expectations](community-care.md){.md-button .md-button--secondary}
 
 ## Postdoc Project Landmarks
 
@@ -40,14 +34,14 @@ Use these lightweight labels to connect work sessions, meeting notes, and homepa
 
 PD-A People and roles; PD-B Question and scope; PD-C Data and access; PD-D Methods and workflows; PD-E Results and synthesis; PD-F Outputs and handoff.
 
-[Use the landmark guide](instructions/postdoc-landmarks.md){ .md-button .md-button--secondary }
+[Use the landmark guide](instructions/postdoc-landmarks.md){.md-button .md-button--secondary}
 
 ## How This Repo Is Organized
 
 The repository has two connected layers. Top-level files configure the project and its automation. The `docs/` folder contains the website content. `mkdocs.yml` tells MkDocs how to turn that content into the public site. Analysis folders hold the working scientific materials that generate the results shown on the website.
 
 | Part of the repo | What it does | What usually belongs there |
-| --- | --- | --- |
+|------------------------|------------------------|------------------------|
 | Top-level files and folders | Configure the project and keep shared repository guidance in one place | `README.md`, `LICENSE`, workflows, containers, templates, environment setup, and repo-wide metadata |
 | `docs/` | Stores the source content for the public website | Homepage text, summaries, methods, community-facing documentation, and website assets |
 | `mkdocs.yml` | Controls how the site is rendered | Navigation, theme settings, plugins, and GitHub edit links |
@@ -55,9 +49,9 @@ The repository has two connected layers. Top-level files configure the project a
 
 ## Repository Side: Do The Research
 
-![Placeholder image for the repository side of the workflow][slot-repository-side]{ .slot-button-image }
+![Placeholder image for the repository side of the workflow][slot-repository-side]
 
---8<-- "_generated/slot_notes/repository-side.md"
+--8\<-- "\_generated/slot_notes/repository-side.md"
 
 Related landmarks: PD-C Data and access; PD-D Methods and workflows.
 
@@ -71,9 +65,9 @@ The repository is the working record of the project: it tracks what changed, why
 
 ## Website Side: Share The Research
 
-![Placeholder image for the website side of the workflow][slot-website-side]{ .slot-button-image }
+![Placeholder image for the website side of the workflow][slot-website-side]
 
---8<-- "_generated/slot_notes/website-side.md"
+--8\<-- "\_generated/slot_notes/website-side.md"
 
 Related landmarks: PD-E Results and synthesis; PD-F Outputs and handoff.
 
@@ -105,7 +99,7 @@ For guidance on turning this scaffold into a public scientific record, see the [
 
 Use this section to show how the project gets started without manually editing image links one by one.
 
---8<-- "_generated/galleries/root/start-here/index.md"
+--8\<-- "\_generated/galleries/root/start-here/index.md"
 
 ## Key Links To Replace
 
@@ -118,20 +112,20 @@ Use this section for the links the postdoc will actually maintain. Replace each 
 
 ## Current Phase
 
-Working Phase: Project setup  
+Working Phase: Project setup\
 (Replace this line with the phase the project is actually in, such as onboarding, data access, active analysis, writing, or handoff.)
 
 ## People
 
-![Placeholder image representing collaboration and project identity][slot-group-photo]{ .section-image }
+![Placeholder image representing collaboration and project identity][slot-group-photo]
 
---8<-- "_generated/slot_notes/group-photo.md"
+--8\<-- "\_generated/slot_notes/group-photo.md"
 
 | Name | Role | Institution | Responsibilities |
-| --- | --- | --- | --- |
+|------------------|------------------|------------------|------------------|
 | Yu Peng | Postdoc | ESIIL | Hands-on research execution |
 | Timothy Bowles | Mentor | UC Berkeley | Guidance on agroecology and academic development |
 | Cibele Amaral | Supervisor | ESIIL | Oversee daily research operations and remote sensing integration |
 | Lixin Wang | Phd Advisor | IU Indianapolis | Offer long-term research continuity and hydroecology expertise |
 
---8<-- "_generated/image_slots.md"
+--8\<-- "\_generated/image_slots.md"
