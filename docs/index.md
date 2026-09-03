@@ -2,9 +2,7 @@
 
 ## Unlocking field-scale cover crop dynamics through deep learning-driven satellite harmonization
 
-This is a postdoc research project led by Dr. Yu Peng supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). 
-This project aims t integrates multi-scale field observations, remote sensing fusion, and spatial-temporal modeling to map the US. continetial-boudaries of cover cropping and its associated ecosystem services  quantify agricultural conservation.
-Runs as a open-science system: a GitHub repository where environmental data science is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
+This is a postdoc research project led by Dr. Yu Peng supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). This project aims t integrates multi-scale field observations, remote sensing fusion, and spatial-temporal modeling to map the US. continetial-boudaries of cover cropping and its associated ecosystem services quantify agricultural conservation. Runs as a open-science system: a GitHub repository where environmental data science is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
 
 As the project progresses, the repository becomes the reproducible record of the research, and the website becomes the public report.
 
@@ -28,11 +26,17 @@ Field-scale monitoring of cover crops is vital for assessing soil organic carbon
 
 [Plan the work](work-plan.md){.md-button} [Document data and resources](how-this-postdoc-project-works.md#data){.md-button .md-button--secondary} [Set community expectations](community-care.md){.md-button .md-button--secondary}
 
-## Postdoc Project Landmarks
+## Landmarks
 
-Use these lightweight labels to connect work sessions, meeting notes, and homepage edits:
+1) Generating ground-true training and validating database by LLMs
 
-PD-A People and roles; PD-B Question and scope; PD-C Data and access; PD-D Methods and workflows; PD-E Results and synthesis; PD-F Outputs and handoff.
+2) Harmonizing muti-source satellite and earth embedding observations
+
+3) 
+
+4)
+
+
 
 [Use the landmark guide](instructions/postdoc-landmarks.md){.md-button .md-button--secondary}
 
