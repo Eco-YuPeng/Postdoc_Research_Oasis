@@ -24,6 +24,7 @@ Field-scale monitoring of cover crops is vital for assessing soil organic carbon
 4. **Continental mapping and ecosystem services.** Scale the retrieval across the continental US and link the resulting maps to SOC and GHG outcomes for conservation assessment. 
 
 
+![research roadmap][slot-analysis]
 
 ## Research Resources
 
