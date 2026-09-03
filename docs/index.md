@@ -1,44 +1,45 @@
-# Tracking cover crop at scale
+# Tracking Cover Crop at Scale
 
 ## Unlocking field-scale cover crop dynamics through deep learning-driven satellite harmonization
 
-This is a postdoc research project led by Dr. Yu Peng supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). This project aims t integrates multi-scale field observations, remote sensing fusion, and spatial-temporal modeling to map the US. continetial-boudaries of cover cropping and its associated ecosystem services quantify agricultural conservation. Runs as a open-science system: a GitHub repository where environmental data science is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
+This is a postdoc research project led by Dr. Yu Peng, supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). The project integrates multi-scale field observations, satellite data fusion, and spatial-temporal modeling to map cover cropping across the continental United States and to quantify the ecosystem services that agricultural conservation delivers. It runs as an open-science system: a GitHub repository where the environmental data science is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences.
 
 As the project progresses, the repository becomes the reproducible record of the research, and the website becomes the public report.
 
-[Edit this homepage in GitHub](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/edit/main/docs/index.md){.md-button .md-button--secondary} [Open the GitHub repository](https://github.com/Eco_YuPeng/YuPeng_Postdoc_OASIS/doc/main/Index.md){.md-button}
+[Edit this homepage in GitHub](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS/edit/main/docs/index.md){.md-button .md-button--secondary} [Open the GitHub repository](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS){.md-button}
 
-![Placeholder image for the homepage overview][slot-hero]
+![Homepage overview image][slot-hero]
 
---8\<-- "\_generated/slot_notes/hero.md"
+--8<-- "_generated/slot_notes/hero.md"
 
 ## Project Abstract
 
-Field-scale monitoring of cover crops is vital for assessing soil organic carbon (SOC) sequestration and greenhouse gas (GHG) dynamics across agroecosystems.Yet, understanding at scale remians blank... This project leverages deep learning architectures to harmonize multi-sensor satellite observations (e.g., PlanetScope, Sentinel-2, Landsat), enabling high-resolution tracking of cover crop establishment, biomass accumulation, and termination dates across broad geographic domains.
+Field-scale monitoring of cover crops is vital for assessing soil organic carbon (SOC) sequestration and greenhouse gas (GHG) dynamics across agroecosystems, yet reliable wall-to-wall information at that scale remains largely unavailable. Existing products are limited by coarse resolution, sparse ground truth, and inconsistent revisit across sensors, so the timing of establishment and termination — the part that matters most for carbon and nitrogen outcomes — is rarely resolved. This project leverages deep learning architectures to harmonize multi-sensor satellite observations (PlanetScope, Sentinel-2, Landsat, and thermal data from ECOSTRESS), enabling high-resolution tracking of cover crop establishment, biomass accumulation, and termination dates across broad geographic domains. The resulting maps and time series are designed to feed directly into biogeochemical and policy-relevant assessments of agricultural conservation practice.
+
+Landmark: PD-B Question and scope.
+
+## Research Objectives
+
+1. **Ground truth at scale.** Generate a training and validation database of cover crop presence, timing, and species by combining field records, producer surveys, and LLM-assisted extraction from the published literature. *(PD-C)*
+2. **Sensor harmonization.** Fuse multi-source optical, thermal, and earth-embedding observations into a consistent, gap-filled field-scale time series. *(PD-D)*
+3. **Phenology retrieval.** Train and evaluate deep learning models that retrieve establishment, peak biomass, and termination dates at the field level. *(PD-D, PD-E)*
+4. **Continental mapping and ecosystem services.** Scale the retrieval across the continental US and link the resulting maps to SOC and GHG outcomes for conservation assessment. *(PD-E, PD-F)*
+
+[Use the landmark guide](instructions/postdoc-landmarks.md){.md-button .md-button--secondary}
 
 ## Start Here
 
-1.  Replace the title and summary with the project question, scientific or community need, and main outputs the postdoc expects to produce.
-2.  Add or link datasets, working documents, references, and mentor/collaborator resources.
-3.  Run or adapt at least one analysis workflow and record decisions in the repository.
-4.  Commit figures, tables, notes, and summaries so the work is versioned and reproducible.
-5.  Use the website to share progress, methods, and results with collaborators and community audiences.
+New to the project? These five steps orient a collaborator in about fifteen minutes.
+
+1. Read the Project Abstract and Research Objectives above to understand the question and what the project intends to produce.
+2. Review the [Work Plan](work-plan.md) for the current phase, active tasks, and open blockers.
+3. Check the data inventory and access notes before requesting or moving any dataset.
+4. Run or adapt one analysis workflow from the repository, and record what you decided and why.
+5. Commit figures, tables, notes, and summaries so the work stays versioned and reproducible.
+
+Landmark: PD-B Question and scope.
 
 [Plan the work](work-plan.md){.md-button} [Document data and resources](how-this-postdoc-project-works.md#data){.md-button .md-button--secondary} [Set community expectations](community-care.md){.md-button .md-button--secondary}
-
-## Landmarks
-
-1) Generating ground-true training and validating database by LLMs
-
-2) Harmonizing muti-source satellite and earth embedding observations
-
-3) 
-
-4)
-
-
-
-[Use the landmark guide](instructions/postdoc-landmarks.md){.md-button .md-button--secondary}
 
 ## How This Repo Is Organized
 
@@ -53,9 +54,9 @@ The repository has two connected layers. Top-level files configure the project a
 
 ## Repository Side: Do The Research
 
-![Placeholder image for the repository side of the workflow][slot-repository-side]
+![Repository side of the workflow][slot-repository-side]
 
---8\<-- "\_generated/slot_notes/repository-side.md"
+--8<-- "_generated/slot_notes/repository-side.md"
 
 Related landmarks: PD-C Data and access; PD-D Methods and workflows.
 
@@ -69,9 +70,9 @@ The repository is the working record of the project: it tracks what changed, why
 
 ## Website Side: Share The Research
 
-![Placeholder image for the website side of the workflow][slot-website-side]
+![Website side of the workflow][slot-website-side]
 
---8\<-- "\_generated/slot_notes/website-side.md"
+--8<-- "_generated/slot_notes/website-side.md"
 
 Related landmarks: PD-E Results and synthesis; PD-F Outputs and handoff.
 
@@ -103,33 +104,41 @@ For guidance on turning this scaffold into a public scientific record, see the [
 
 Use this section to show how the project gets started without manually editing image links one by one.
 
---8\<-- "\_generated/galleries/root/start-here/index.md"
+--8<-- "_generated/galleries/root/start-here/index.md"
 
-## Key Links To Replace
+## Key Links
 
-Use this section for the links the postdoc will actually maintain. Replace each placeholder with the working document, repository resource, dataset hub, or output page that collaborators should use.
+The resources collaborators should actually use. Replace any remaining `[link]` placeholder as soon as the resource exists.
+
+Landmark: PD-C Data and access.
 
 - Main Working Document: [link]
-- GitHub Repository: [link]
+- GitHub Repository: [Eco-YuPeng/YuPeng_Postdoc_OASIS](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS)
+- Analysis Code: [link]
 - Data / Resources: [link]
 - Outputs / Dashboard: [link]
 
 ## Current Phase
 
-Working Phase: Project setup\
-(Replace this line with the phase the project is actually in, such as onboarding, data access, active analysis, writing, or handoff.)
+**Working Phase: Active analysis — data harmonization and ground-truth assembly.**
+
+Current focus is building the multi-sensor fused time series over the test region and assembling the labelled cover crop database that model training depends on. Update this line whenever the phase changes (onboarding, data access, active analysis, writing, or handoff).
+
+Landmark: PD-B Question and scope.
 
 ## People
 
-![Placeholder image representing collaboration and project identity][slot-group-photo]
+![Project identity and collaboration image][slot-group-photo]
 
---8\<-- "\_generated/slot_notes/group-photo.md"
+--8<-- "_generated/slot_notes/group-photo.md"
+
+Landmark: PD-A People and roles.
 
 | Name | Role | Institution | Responsibilities |
 |------------------|------------------|------------------|------------------|
-| Yu Peng | Postdoc | ESIIL | Hands-on research execution |
+| Yu Peng | Postdoctoral Researcher | ESIIL, University of Colorado Boulder | Project lead: data fusion, model development, analysis, and public reporting |
+| Cibele Amaral | Supervisor | ESIIL | Oversees daily research operations and remote sensing integration |
 | Timothy Bowles | Mentor | UC Berkeley | Guidance on agroecology and academic development |
-| Cibele Amaral | Supervisor | ESIIL | Oversee daily research operations and remote sensing integration |
-| Lixin Wang | Phd Advisor | IU Indianapolis | Offer long-term research continuity and hydroecology expertise |
+| Lixin Wang | PhD Advisor | IU Indianapolis | Long-term research continuity and hydroecology expertise |
 
---8\<-- "\_generated/image_slots.md"
+--8<-- "_generated/image_slots.md"
