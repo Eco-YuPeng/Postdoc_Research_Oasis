@@ -1,10 +1,10 @@
 # Tracking Cover Crops at Scale: unlocking field-scale cover crop dynamics via AI-driven satellite harmonization
 
+
 This is a postdoc research project led by Dr. Yu Peng, supported by the Environmental Data Science Innovation & Impact Lab (ESIIL). The aim of this project is to integrate multi-scale field observations, satellite data fusion, and spatial-temporal modeling to map cover cropping across the continental US. and to quantify the ecosystem services that agricultural conservation delivers. 
 
+Since, it runs as an open-science system: a GitHub repository where this project is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences. The Repo and the website can acceess via following links.
 ![Homepage overview image][slot-hero]
-
-Since, it runs as an open-science system: a GitHub repository where this project is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences. The Repo and the website can acceess via following links:
 
 [Open the GitHub repository](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS){.md-button}
 
