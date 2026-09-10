@@ -6,121 +6,130 @@ Landmark: all landmarks apply here, depending on the phase. See the [landmark gu
 
 Landmark: PD-A People and roles; PD-B Question and scope.
 
-**Kick-off meeting — August 28, 2026.** Attendees: Yu Peng (ESIIL postdoc, project lead), Cibele Amaral (ESIIL, project supervisor), Timothy Bowles (UC Berkeley, academic mentor), and Lixin Wang (IU Indianapolis, advisory expert).
+**Kick-off meeting — August 28, 2026**
 
-- Introductions: each member's background and the role they will play in the project (see [Project Members](index.md#project-members))
-- Set the roadmap for the collaboration around the four [research objectives](index.md#research-objectives): LLM-synthesized ground truth, sensor harmonization, phenology retrieval, and continental mapping linked to SOC/GHG outcomes
-- Meeting notes are kept in the repository under `templates/meeting-notes/`
+| Attendee | Role | Institution |
+|---|---|---|
+| Yu Peng | Postdoc, project lead | ESIIL |
+| Cibele Amaral | Project supervisor | ESIIL |
+| Timothy Bowles | Academic mentor | UC Berkeley |
+| Lixin Wang | Advisory expert | IU Indianapolis |
+
+- Introductions and roles → [Project Members](index.md#project-members)
+- Roadmap set around the four [research objectives](index.md#research-objectives)
+- Notes: `templates/meeting-notes/` in the repository
 
 ## Active Research
 
 Landmark: PD-D Methods and workflows.
 
-Two workstreams are running in parallel and feed each other:
+| Workstream | Objective | Repo | Status |
+|---|---|---|---|
+| Automated ground-truth labels | 1 — LLM-synthesized training data | [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC) | Pipeline built; first end-to-end run next |
+| HLS × ECOSTRESS fusion | 2 — sensor harmonization | [firerx_ml_CC](https://github.com/Eco-YuPeng/firerx_ml_CC) · [notebook](https://github.com/Eco-YuPeng/firerx_ml_CC/blob/main/app_py/CoverCrop_Fusion_v5_2.ipynb) | Pilot cube + phenology layers done |
 
-1. **Objective 1 — automated ground-truth labels.** An LLM-based extraction agent that turns published cover crop field studies into a standardized table of *where, when, and how* cover crops were grown, so the detection model has labelled fields to train and validate against.
-2. **Objective 2 — sensor harmonization.** A gap-free, evenly spaced fused image cube from HLS optical data and ECOSTRESS thermal data, compressed into per-pixel phenology layers that the [FireRX ML](https://github.com/j-gams/firerx_ml) sampler can ingest.
+- Compute: CyVerse (JupyterLab, VS Code); NASA Earthdata via `earthaccess`; Claude models via CyVerse AI-VERDE
+- Storage: CyVerse Data Store `CoverCrop_Fusion/` (fused cube, caches, figures)
+- Blocker: no labelled fields yet → greenness threshold in the phenology layers is provisional
 
-Where the work lives:
+### Progress 1 · Automated Extraction of Field Ground-Truth Labels
 
-- Active work: [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC) (literature extraction agent) and [CoverCrop_Fusion_v5_2.ipynb](https://github.com/Eco-YuPeng/firerx_ml_CC/blob/main/app_py/CoverCrop_Fusion_v5_2.ipynb) (HLS × ECOSTRESS fusion, phenology layers, layer diagnostics)
-- Data and code updates: [firerx_ml_CC repository](https://github.com/Eco-YuPeng/firerx_ml_CC); fused cube and per-scene caches archived in the CyVerse Data Store (`CoverCrop_Fusion/`)
-- Compute: CyVerse JupyterLab and VS Code containers; NASA Earthdata (`earthaccess`) for HLS and ECOSTRESS access; Claude-series models through CyVerse's AI-VERDE gateway for the extraction agent
-- Open questions or blockers: the labelled-field dataset is still being assembled, so the greenness threshold that drives the phenology layers is provisional (see below)
+**Goal** — turn published cover crop field studies into labelled fields (where · when · which species · which cash crop) for training and validating the detection model.
 
-### Progress: Automated Extraction of Field Ground-Truth Labels
+**Pipeline** (one PDF in → rows out)
 
-**Why.** No wall-to-wall cover crop label set exists at field scale, but hundreds of published field experiments record exactly what a detection model needs — plot location, the season the cover crop was on the ground, its species, and the cash crop that followed. Extracting these by hand is slow (the manual pass behind my meta-analysis took months for ~90 papers). This workstream builds a reusable agent that does it automatically, verifiably, and in a form other researchers can rerun on their own corpora.
+| Step | What happens | Who does it |
+|---|---|---|
+| 1. Parse | PDF → Markdown; locate Methods and Results | code |
+| 2. Block 1 | Location, species, cash crop, planting/termination dates from Methods | regex + gazetteer; LLM only for leftovers |
+| 3. Block 2 | Classify response types (yield / GHG / SOC / N); pull values from text, tables, or figure-referenced charts | LLM (vision only when figure-referenced) |
+| 4. Normalize | Controlled vocabularies; response ratios | pure math, never LLM |
+| 5. Validate | Species → GBIF / WFO; coordinates → GeoNames | external APIs |
+| 6. Emit | One row per (treatment × species × year × response), each field tagged high / medium / low confidence with source note; never fabricates | code |
 
-**What the agent does.** The pipeline lives in [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC), an *agentic repository* forked from ESIIL's [LLM_lesson_exemplar](https://github.com/CU-ESIIL/LLM_lesson_exemplar) template: an `AGENTS.md` file defines how an AI agent (or a person) is allowed to operate inside it, and every run is logged. Given one PDF, the agent:
+- Built on ESIIL's [LLM_lesson_exemplar](https://github.com/CU-ESIIL/LLM_lesson_exemplar) agentic-repo pattern (`AGENTS.md`, run log)
+- Model calls go through an OpenAI-compatible API → portable across providers
 
-1. Converts it to Markdown and locates the Methods and Results sections.
-2. Pulls **Block 1** (core plot and practice information — coordinates, cover crop species, cash crop, planting and termination timeline) from Methods, using regex and a species gazetteer first and the LLM only for what code cannot get.
-3. Classifies which ecosystem-service responses the paper reports (yield, GHG, SOC, nitrogen), then pulls those **Block 2** fields from Results text, tables, or — only when explicitly figure-referenced — a vision read of the chart.
-4. Normalizes raw text into controlled-vocabulary fields and computes response ratios by pure math, never by the LLM.
-5. Validates species names and coordinates against external services (GBIF / WFO / GeoNames).
-6. Tags every field `high` / `medium` / `low` confidence with a source note, and writes one row per experimental unit (treatment × species × year × response). It never fabricates a value it could not find.
-
-The LLM is used only where judgment is required — locating sections, classifying response types, reading figures — and is called through a plain OpenAI-compatible API so the workflow is portable across model providers.
-
-**Ground-truth label schema.** The extraction output is being fused with two tables already built by hand for the meta-analysis (a GHG table, 295 records from 40 papers, and a yield table, 1,026 records from 91 papers) into one US cover crop training/validation dataset for the detection model:
+**Label schema**
 
 | Design choice | Decision |
 |---|---|
-| Unit of one row | (site, field/plot, cover-crop season, treatment) |
-| Negatives | No-cover-crop control plots are kept as explicit negative labels |
-| Season label | `cc_season` keyed to the cover crop **termination** year |
-| Required fields | plot location; cover crop year and the period it was present on the surface; species / type (legume vs. non-legume, interseeded or not); cash crop, with planting and harvest dates when reported; cover crop biomass when available |
-| Spatial confidence | Tiered — most records are small-plot station experiments smaller than a 30 m pixel, with cover crop and control plots adjacent, so each record carries a confidence tier that downstream sampling can filter on |
-| Coordinate QC | Doubtful coordinates are re-checked against multiple sources (paper text, site names, gazetteers) before a record is kept |
+| One row | (site, field/plot, cover-crop season, treatment) |
+| Negatives | No-cover-crop control plots kept as explicit negatives |
+| Season key | `cc_season` = cover crop **termination** year |
+| Required fields | location · CC year and period on the surface · species / type (legume vs. non-legume, interseeded) · cash crop with planting / harvest dates · biomass when available |
+| Spatial confidence | Tiered — most records are small plots < 30 m pixel with CC / control adjacent |
+| Coordinate QC | Doubtful coordinates re-checked against multiple sources |
 
-**Status.** The repository scaffold, schema, gazetteer, and validation stages are in place; the GHG sub-schema has been converted to long format, real model-calling stages and a multi-row-per-paper extraction step have been added, and a command-line runner with a passing test suite is committed. Development and testing run on CyVerse.
+- Seed data: hand-built GHG table (295 records / 40 papers) + yield table (1,026 records / 91 papers)
 
-**Next steps.**
+**Status & next**
 
-- Run the first end-to-end extraction on a single cover crop mixture paper and review the output field by field
-- Batch the existing ~94-paper corpus; automatically download open-access PDFs and list paywalled ones for manual retrieval
-- Merge the extracted records with the two hand-built tables and publish the labelled dataset with its confidence tiers
-- Use the labelled fields to tune the greenness threshold and evaluate the phenology layers from the fusion pilot below
+- ✅ Scaffold, schema (GHG in long format), gazetteer, validation, model-calling stages, multi-row extraction, CLI runner, tests passing
+- ⬜ First end-to-end run on one paper → field-by-field review
+- ⬜ Batch the ~94-paper corpus (auto-download open access; list paywalled for manual retrieval)
+- ⬜ Merge with hand-built tables → publish labelled dataset with confidence tiers
+- ⬜ Use labels to tune the greenness threshold in Progress 2
 
-### Preliminary Results: HLS × ECOSTRESS Fusion Pilot
+### Progress 2 · HLS × ECOSTRESS Fusion Pilot
 
-**Study area and period.** A 10 × 10 km square near the Purdue ACRE farm, West Lafayette, Indiana (center −86.995°, 40.482°; UTM 16N), covering September 2024 through October 2025 — one full off-season between the 2024 harvest and the 2025 main crop. Cropland is defined from the USDA Cropland Data Layer (corn and soybeans), which covers 54% of the ROI.
+**Setup**
 
-**Inputs.**
+| Item | Value |
+|---|---|
+| ROI | 10 × 10 km near Purdue ACRE farm, West Lafayette, IN (−86.995°, 40.482°; UTM 16N) |
+| Period | Sep 2024 – Oct 2025 · 27 × 16-day windows |
+| Cropland mask | USDA CDL corn + soybean · 54% of ROI |
 
-| Source | Product | Variable | Native resolution |
+| Source | Product | Variable | Resolution |
 |---|---|---|---|
-| NASA HLS (Landsat 8/9 + Sentinel-2 A/B) | HLSL30 / HLSS30 v2.0 | NDVI and NDTI (Fmask-masked for cloud, shadow, snow, water) | 30 m |
-| NASA ECOSTRESS | ECO_L3T_JET | Daily evapotranspiration (ET), QC-masked | 70 m |
+| NASA HLS (Landsat 8/9 + Sentinel-2) | HLSL30 / HLSS30 v2.0 | NDVI, NDTI (Fmask-masked) | 30 m |
+| NASA ECOSTRESS | ECO_L3T_JET | Daily ET (QC-masked) | 70 m |
 | USDA NASS | Cropland Data Layer | Corn / soybean mask | 30 m |
 
-**What was built.** 116 usable HLS observation days were composited into 27 consecutive 16-day windows (NDVI by median, ET by mean), and remaining temporal gaps were filled by per-pixel linear interpolation. Both reference grids are derived from the ROI polygon itself — not from whichever scene downloads first — so the 30 m and 70 m layers stay registered and span the full study area. The resulting cube is 99.7% valid for NDVI/NDTI and 98.6% valid for ET.
+**Fused cube**
 
-![Nine-panel quality-control view of the fused cube: NDVI in summer and winter, NDTI in winter, spring ET, CDL cropland mask, winter NDVI × NDTI plane, and NDVI / NDTI / ET trajectories over the season](assets/images/results/fused_cube_qc.png)
+- 116 HLS observation days → 16-day composites (NDVI median, ET mean) → per-pixel linear gap-fill
+- Grids derived from the ROI polygon, so 30 m and 70 m layers stay registered over the full area
+- Valid coverage: NDVI / NDTI 99.7% · ET 98.6%
 
-*Figure 1. Visual QC of the fused cube. Top: NDVI at summer peak (2025-07-10) and mid-winter (2025-01-15), and NDTI in mid-winter. Middle: spring ET (2025-05-07, 99% valid), the CDL cropland mask, and the winter NDVI × NDTI plane for cropland pixels. Bottom: seasonal trajectories of NDVI, NDTI, and ET for cropland versus other land, with the off-season (blue) and termination window (red) shaded.*
+![Nine-panel QC view of the fused cube](assets/images/results/fused_cube_qc.png)
 
-Key checks all pass: summer cropland NDVI averages 0.84 (bright, healthy main crop), mid-winter cropland NDVI drops to 0.23, and winter cropland NDTI sits at 0.10 — the residue-sensitive range. In the winter NDVI × NDTI plane, green pixels (candidate cover crops, right of the dashed line) separate from residue-covered bare soil (top-left), which is exactly the ambiguity NDVI alone cannot resolve. The ET trajectory is flat and near zero through winter and rises sharply from March into the termination window, consistent with the expectation that thermal data earns its place in April–May rather than mid-winter.
+*Figure 1. Fused cube QC. Top: NDVI summer peak (2025-07-10), NDVI mid-winter (2025-01-15), NDTI mid-winter. Middle: spring ET (2025-05-07), CDL cropland mask, winter NDVI × NDTI plane. Bottom: NDVI / NDTI / ET trajectories; off-season (blue) and termination window (red) shaded.*
 
-**Phenology layers for FireRX.** Because the FireRX sampler has no time dimension, the 27-step cube was compressed into five per-pixel scalars, each a hypothesis about what separates a cover-cropped field from a bare one:
-
-| Layer | What it measures | Cropland mean |
+| Check | Value | Reads as |
 |---|---|---|
-| `n_green` | Number of off-season windows with NDVI above the greenness threshold | 1.11 |
+| Summer cropland NDVI | 0.84 | healthy main crop |
+| Winter cropland NDVI | 0.23 | mostly bare; green patches = candidate cover crops |
+| Winter cropland NDTI | 0.10 | residue-sensitive range |
+| Winter NDVI × NDTI plane | green vs. residue separate | ambiguity NDVI alone cannot resolve |
+| ET trajectory | ~0 in winter, sharp rise Mar–May | thermal signal earns its place at termination |
+
+**Phenology layers for FireRX** (time axis compressed to five per-pixel scalars)
+
+| Layer | Measures | Cropland mean |
+|---|---|---|
+| `n_green` | Off-season windows with NDVI > threshold | 1.11 |
 | `ndvi_int` | Green-days accumulated over the off-season | 0.35 |
-| `up_slope` | Steepest spring green-up (window to window) | 0.05 |
-| `term_drop` | Sharpest drop during the termination window | 0.04 |
-| `peak_win` | When greenness peaked between harvest and planting | 6.6 |
+| `up_slope` | Steepest spring green-up | 0.05 |
+| `term_drop` | Sharpest drop in the termination window | 0.04 |
+| `peak_win` | When greenness peaked (harvest → planting) | 6.6 |
 
-![Three-panel layer diagnostics: map of n_green aggregated to fields, log histogram of n_green over cropland pixels, and a threshold sensitivity curve for the off-season NDVI maximum](assets/images/results/layer_diagnostics.png)
+![Layer diagnostics](assets/images/results/layer_diagnostics.png)
 
-*Figure 2. Layer diagnostics. Left: `n_green` aggregated to field objects (whole-field patterns indicate real signal; speckle would indicate noise). Center: distribution of `n_green` over cropland pixels — 15.9% of cropland was green for more than two off-season windows. Right: share of cropland whose off-season NDVI maximum exceeds a given threshold; the current provisional threshold of 0.30 is marked.*
+*Figure 2. Layer diagnostics. Left: `n_green` per field (whole-field patches = real signal). Center: `n_green` distribution — 15.9% of cropland green for > 2 off-season windows. Right: threshold sensitivity of the off-season NDVI maximum; provisional threshold 0.30 marked.*
 
-No pair of layers is redundant (largest correlation: `up_slope` / `term_drop`, r = 0.79), so all five are kept. The `n_green` map shows coherent whole-field patches rather than speckle, and roughly 16% of cropland stayed green through more than two off-season windows — a plausible cover-crop adoption rate for this part of Indiana.
+- No redundant layers (max |r| = 0.79, `up_slope` / `term_drop`) → all five kept
+- ~16% of cropland stayed green > 2 windows — plausible adoption rate for this part of Indiana
 
-**Caveats to keep in mind.** The greenness threshold (NDVI > 0.30) is provisional and will be tuned once labelled fields exist for this ROI. Part of the cube is interpolated rather than measured, and gap-filled winter windows carry less evidence than clear ones. Mid-winter ET is close to zero for both cover crops and bare soil, so the thermal signal is most informative around termination.
+**Caveats**
 
-**Next steps.**
+- Greenness threshold 0.30 is provisional until labelled fields exist
+- Part of the cube is interpolated, not measured; gap-filled winter windows carry less evidence
+- Mid-winter ET ≈ 0 for both cover crop and bare soil — thermal is most informative Apr–May
 
-- Export the five layers as GeoTIFFs and point the FireRX `batch_align_raster` config at them
-- Assemble labelled cover-crop fields for the ROI (Objective 1) and sweep the greenness threshold against them
-- Add ECOSTRESS LST with overpass-time normalisation as a second thermal channel
-- Repeat the pipeline on additional ROIs before scaling to regional tiles
+**Next**
 
-## Outputs And Handoff
-
-Landmark: PD-F Outputs and handoff.
-
-For outputs from the postdoc project, list the full authors or contributors for each product. If you list a paper, presentation, dataset, dashboard, package, report, or educational material, include enough information that future readers can understand who contributed and how to cite or reuse it.
-
-- Final outputs: [link]
-- Manuscripts or products: [link]
-- Archive resources: [link]
-- Handoff notes: [link]
-
-![Placeholder image representing final outputs and synthesis products][slot-outputs]{ .slot-square-image }
-
---8<-- "_generated/slot_notes/outputs.md"
-
---8<-- "_generated/image_slots.md"
+- ⬜ Export five layers as GeoTIFFs → FireRX `batch_align_raster`
+- ⬜ Add ECOSTRESS LST with overpass-time normalisation
+- ⬜ Repeat on additional ROIs before scaling to regional tiles

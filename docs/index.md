@@ -40,13 +40,30 @@ The repository has two connected layers. Top-level files configure the project a
 [Research Progress](work-plan.md){.md-button} [Preliminary Results](work-plan.md#preliminary-results-hls-ecostress-fusion-pilot){.md-button .md-button--secondary} [Postdoc Resources](resources/cyverse_basics.md){.md-button .md-button--secondary}
 
 
-## Early Process Gallery
+## Process Gallery
 
-Use this section to show how the project gets started without manually editing image links one by one.
+Figures from the HLS × ECOSTRESS fusion pilot ([firerx_ml_CC](https://github.com/Eco-YuPeng/firerx_ml_CC)). See the [Work Plan](work-plan.md) for details.
 
---8<-- "_generated/galleries/root/start-here/index.md"
-
-
+<div class="media-gallery">
+  <figure class="media-gallery__card media-gallery__card--image">
+    <a href="assets/images/results/roi_context.png">
+      <img src="assets/images/results/roi_context.png" alt="Study area context: US Corn Belt, West Lafayette, Indiana, and the pilot ROI">
+    </a>
+    <figcaption>Pilot study area — Corn Belt → West Lafayette, IN → ROI grid</figcaption>
+  </figure>
+  <figure class="media-gallery__card media-gallery__card--image">
+    <a href="assets/images/results/fused_cube_qc.png">
+      <img src="assets/images/results/fused_cube_qc.png" alt="Fused HLS × ECOSTRESS cube: NDVI, NDTI, ET maps and seasonal trajectories">
+    </a>
+    <figcaption>Fused cube QC — NDVI · NDTI · ET maps and seasonal trajectories</figcaption>
+  </figure>
+  <figure class="media-gallery__card media-gallery__card--image">
+    <a href="assets/images/results/layer_diagnostics.png">
+      <img src="assets/images/results/layer_diagnostics.png" alt="Phenology layer diagnostics: n_green field map, histogram, threshold sensitivity">
+    </a>
+    <figcaption>Phenology layers for FireRX — field map, distribution, threshold sensitivity</figcaption>
+  </figure>
+</div>
 
 ## Project Members
 
