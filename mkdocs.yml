@@ -39,7 +39,6 @@ theme:
   logo: 'assets/esiil_content/ESIIL_logo.png'
   favicon: 'assets/esiil_content/favicon.ico'
   features:
-    - navigation.sections
     - navigation.instant
     - navigation.tracking
     - navigation.indexes
