@@ -6,7 +6,7 @@ This is a postdoc research project led by Dr. Yu Peng, supported by the Environm
 Since, it runs as an open-science system: a GitHub repository where this project is organized, analyzed, and versioned, and a public website where results are explained and shared with collaborators, mentors, and community audiences. The Repo and the website can acceess via following links.
 ![Homepage overview image][slot-hero]
 
-[Open the GitHub repository](https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS){.md-button}
+[Open the GitHub repository](https://github.com/Eco-YuPeng/Postdoc_Research_Oasis){.md-button}
 
 ## Research Abstract
 
@@ -37,7 +37,7 @@ The repository has two connected layers. Top-level files configure the project a
 | `mkdocs.yml` | Workflows and reproducible analysis | Navigation, theme settings, plugins, and GitHub edit links |
 | Working folders | Figures, tables, manuscripts, and other outputs | Data references, notebooks, scripts, workflows, figures, outputs, and reproducibility materials |
 
-[Research Progress](work-plan.md){.md-button} [Data & Resources](how-this-postdoc-project-works.md#data){.md-button .md-button--secondary} [Science Sharing](community-care.md){.md-button .md-button--secondary}
+[Research Progress](work-plan.md){.md-button} [Preliminary Results](work-plan.md#preliminary-results-hls-ecostress-fusion-pilot){.md-button .md-button--secondary} [Postdoc Resources](resources/cyverse_basics.md){.md-button .md-button--secondary}
 
 
 ## Early Process Gallery
