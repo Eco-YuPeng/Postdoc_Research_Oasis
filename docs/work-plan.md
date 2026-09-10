@@ -30,6 +30,8 @@ Two workstreams are running in parallel and feed each other:
 1. **Objective 1 — automated ground-truth labels.** An LLM-based extraction agent that turns published cover crop field studies into a standardized table of *where, when, and how* cover crops were grown, so the detection model has labelled fields to train and validate against.
 2. **Objective 2 — sensor harmonization.** A gap-free, evenly spaced fused image cube from HLS optical data and ECOSTRESS thermal data, compressed into per-pixel phenology layers that the [FireRX ML](https://github.com/j-gams/firerx_ml) sampler can ingest.
 
+Where the work lives:
+
 - Active work: [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC) (literature extraction agent) and [CoverCrop_Fusion_v5_2.ipynb](https://github.com/Eco-YuPeng/firerx_ml_CC/blob/main/app_py/CoverCrop_Fusion_v5_2.ipynb) (HLS × ECOSTRESS fusion, phenology layers, layer diagnostics)
 - Data and code updates: [firerx_ml_CC repository](https://github.com/Eco-YuPeng/firerx_ml_CC); fused cube and per-scene caches archived in the CyVerse Data Store (`CoverCrop_Fusion/`)
 - Compute: CyVerse JupyterLab and VS Code containers; NASA Earthdata (`earthaccess`) for HLS and ECOSTRESS access; Claude-series models through CyVerse's AI-VERDE gateway for the extraction agent
