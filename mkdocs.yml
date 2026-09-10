@@ -1,11 +1,11 @@
 site_name: 'Cover Crop Dynamics & Data Science | Yu Peng'
 site_description: 'AI-driven satellite harmonization for field-scale cover crop dynamics.'
 site_author: Yu Peng
-site_url: https://eco-yupeng.github.io/YuPeng_Postdoc_OASIS/
+site_url: https://eco-yupeng.github.io/Postdoc_Research_Oasis/
 
 # Repository
 repo_name: YuPeng Postdoc OASIS
-repo_url: https://github.com/Eco-YuPeng/YuPeng_Postdoc_OASIS/
+repo_url: https://github.com/Eco-YuPeng/Postdoc_Research_Oasis/
 # The edit URI points MkDocs Material at the docs/ source so page edit links open in GitHub edit mode.
 edit_uri: edit/main/docs/
 # Copyright
@@ -20,21 +20,16 @@ exclude_docs: |
 nav:
   - Home: index.md
   - Work Plan: work-plan.md
-  - How This Postdoc Project Works: how-this-postdoc-project-works.md
-  - ESIIL and Postdoc Resources:
-      - Team Trainings: esiil-resources/team-trainings.md
-      - ESIIL Code of Conduct: esiil-resources/code-of-conduct.md
-      - Community Care: community-care.md
-      - Postdoc Resources:
-          - R and Python bilingualism: resources/bilingualism_md.md
-          - STAC: resources/stac_mount_save.md
-          - Sentinel 2 STAC example: resources/Pull_Sentinal2_l2_data.md
-          - Markdown: resources/markdown_basics.md
-          - CyVerse basics: resources/cyverse_basics.md
-          - GitHub basics: resources/github_basics.md
-          - CyVerse hacks: resources/cyverse_hacks.md
-          - Docker basics: resources/docker_basics.md
-          - Working groups and postdocs: resources/working_groups_and_postdocs.md
+  - Postdoc Resources:
+      - R and Python bilingualism: resources/bilingualism_md.md
+      - STAC: resources/stac_mount_save.md
+      - Sentinel 2 STAC example: resources/Pull_Sentinal2_l2_data.md
+      - Markdown: resources/markdown_basics.md
+      - CyVerse basics: resources/cyverse_basics.md
+      - GitHub basics: resources/github_basics.md
+      - CyVerse hacks: resources/cyverse_hacks.md
+      - Docker basics: resources/docker_basics.md
+      - Working groups and postdocs: resources/working_groups_and_postdocs.md
 
 # Configuration
 theme:

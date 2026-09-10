@@ -36,9 +36,6 @@ Use these rules of thumb when deciding where to put something:
 
 - `docs/index.md` is the homepage for the public site.
 - `docs/work-plan.md` tracks milestones, meetings, outputs, and handoff plans for the postdoc project.
-- `docs/how-this-postdoc-project-works.md` holds collaboration norms, project guides, data links, methods links, and process galleries.
-- `docs/esiil-resources/team-trainings.md` and `docs/esiil-resources/code-of-conduct.md` are under ESIIL and Postdoc Resources.
-- `docs/community-care.md` is nested under ESIIL and Postdoc Resources and links to ESIIL community care and team science resources.
 - `docs/instructions/` contains practical instructions for GitHub, persistent storage, project lifecycle phases, and landmarks.
 - `docs/resources/` contains reusable resource guides such as the Cloud Triangle, Cite and Reuse guidance, and existing postdoc resource pages.
 - `docs/assets/images/slots/` contains named image slots for the homepage and other shared visuals.
