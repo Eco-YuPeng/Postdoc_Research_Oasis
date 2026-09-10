@@ -25,12 +25,50 @@ Landmark: PD-B Question and scope; PD-C Data and access.
 
 Landmark: PD-D Methods and workflows.
 
-Current focus is **Objective 2 (sensor harmonization)**: building a gap-free, evenly spaced fused image cube from HLS optical data and ECOSTRESS thermal data, then compressing it into per-pixel phenology layers that the [FireRX ML](https://github.com/j-gams/firerx_ml) sampler can ingest. The pilot below is the first end-to-end run of that pipeline.
+Two workstreams are running in parallel and feed each other:
 
-- Active work: [CoverCrop_Fusion_v5_2.ipynb](https://github.com/Eco-YuPeng/firerx_ml_CC/blob/main/app_py/CoverCrop_Fusion_v5_2.ipynb) (HLS × ECOSTRESS fusion, phenology layers, layer diagnostics)
+1. **Objective 1 — automated ground-truth labels.** An LLM-based extraction agent that turns published cover crop field studies into a standardized table of *where, when, and how* cover crops were grown, so the detection model has labelled fields to train and validate against.
+2. **Objective 2 — sensor harmonization.** A gap-free, evenly spaced fused image cube from HLS optical data and ECOSTRESS thermal data, compressed into per-pixel phenology layers that the [FireRX ML](https://github.com/j-gams/firerx_ml) sampler can ingest.
+
+- Active work: [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC) (literature extraction agent) and [CoverCrop_Fusion_v5_2.ipynb](https://github.com/Eco-YuPeng/firerx_ml_CC/blob/main/app_py/CoverCrop_Fusion_v5_2.ipynb) (HLS × ECOSTRESS fusion, phenology layers, layer diagnostics)
 - Data and code updates: [firerx_ml_CC repository](https://github.com/Eco-YuPeng/firerx_ml_CC); fused cube and per-scene caches archived in the CyVerse Data Store (`CoverCrop_Fusion/`)
-- Compute: CyVerse JupyterLab container; NASA Earthdata (`earthaccess`) for HLS and ECOSTRESS access
-- Open questions or blockers: no labelled cover-crop fields yet for this ROI, so the greenness threshold that drives the phenology layers is still provisional (see below)
+- Compute: CyVerse JupyterLab and VS Code containers; NASA Earthdata (`earthaccess`) for HLS and ECOSTRESS access; Claude-series models through CyVerse's AI-VERDE gateway for the extraction agent
+- Open questions or blockers: the labelled-field dataset is still being assembled, so the greenness threshold that drives the phenology layers is provisional (see below)
+
+### Progress: Automated Extraction of Field Ground-Truth Labels
+
+**Why.** No wall-to-wall cover crop label set exists at field scale, but hundreds of published field experiments record exactly what a detection model needs — plot location, the season the cover crop was on the ground, its species, and the cash crop that followed. Extracting these by hand is slow (the manual pass behind my meta-analysis took months for ~90 papers). This workstream builds a reusable agent that does it automatically, verifiably, and in a form other researchers can rerun on their own corpora.
+
+**What the agent does.** The pipeline lives in [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC), an *agentic repository* forked from ESIIL's [LLM_lesson_exemplar](https://github.com/CU-ESIIL/LLM_lesson_exemplar) template: an `AGENTS.md` file defines how an AI agent (or a person) is allowed to operate inside it, and every run is logged. Given one PDF, the agent:
+
+1. Converts it to Markdown and locates the Methods and Results sections.
+2. Pulls **Block 1** (core plot and practice information — coordinates, cover crop species, cash crop, planting and termination timeline) from Methods, using regex and a species gazetteer first and the LLM only for what code cannot get.
+3. Classifies which ecosystem-service responses the paper reports (yield, GHG, SOC, nitrogen), then pulls those **Block 2** fields from Results text, tables, or — only when explicitly figure-referenced — a vision read of the chart.
+4. Normalizes raw text into controlled-vocabulary fields and computes response ratios by pure math, never by the LLM.
+5. Validates species names and coordinates against external services (GBIF / WFO / GeoNames).
+6. Tags every field `high` / `medium` / `low` confidence with a source note, and writes one row per experimental unit (treatment × species × year × response). It never fabricates a value it could not find.
+
+The LLM is used only where judgment is required — locating sections, classifying response types, reading figures — and is called through a plain OpenAI-compatible API so the workflow is portable across model providers.
+
+**Ground-truth label schema.** The extraction output is being fused with two tables already built by hand for the meta-analysis (a GHG table, 295 records from 40 papers, and a yield table, 1,026 records from 91 papers) into one US cover crop training/validation dataset for the detection model:
+
+| Design choice | Decision |
+|---|---|
+| Unit of one row | (site, field/plot, cover-crop season, treatment) |
+| Negatives | No-cover-crop control plots are kept as explicit negative labels |
+| Season label | `cc_season` keyed to the cover crop **termination** year |
+| Required fields | plot location; cover crop year and the period it was present on the surface; species / type (legume vs. non-legume, interseeded or not); cash crop, with planting and harvest dates when reported; cover crop biomass when available |
+| Spatial confidence | Tiered — most records are small-plot station experiments smaller than a 30 m pixel, with cover crop and control plots adjacent, so each record carries a confidence tier that downstream sampling can filter on |
+| Coordinate QC | Doubtful coordinates are re-checked against multiple sources (paper text, site names, gazetteers) before a record is kept |
+
+**Status.** The repository scaffold, schema, gazetteer, and validation stages are in place; the GHG sub-schema has been converted to long format, real model-calling stages and a multi-row-per-paper extraction step have been added, and a command-line runner with a passing test suite is committed. Development and testing run on CyVerse.
+
+**Next steps.**
+
+- Run the first end-to-end extraction on a single cover crop mixture paper and review the output field by field
+- Batch the existing ~94-paper corpus; automatically download open-access PDFs and list paywalled ones for manual retrieval
+- Merge the extracted records with the two hand-built tables and publish the labelled dataset with its confidence tiers
+- Use the labelled fields to tune the greenness threshold and evaluate the phenology layers from the fusion pilot below
 
 ### Preliminary Results: HLS × ECOSTRESS Fusion Pilot
 
