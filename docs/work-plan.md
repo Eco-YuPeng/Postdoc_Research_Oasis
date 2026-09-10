@@ -6,20 +6,11 @@ Landmark: all landmarks apply here, depending on the phase. See the [landmark gu
 
 Landmark: PD-A People and roles; PD-B Question and scope.
 
-- Confirm project goals and research questions
-- Identify mentors, collaborators, and communication channels
-- Identify key data, compute, and storage needs
-- Decide what belongs in GitHub versus persistent storage
+**Kick-off meeting — August 28, 2026.** Attendees: Yu Peng (ESIIL postdoc, project lead), Cibele Amaral (ESIIL, project supervisor), Timothy Bowles (UC Berkeley, academic mentor), and Lixin Wang (IU Indianapolis, advisory expert).
 
-## Project Scoping
-
-Landmark: PD-B Question and scope; PD-C Data and access.
-
-- Project summary: [link]
-- Research question: [link]
-- Data inventory: [link]
-- Decision notes: [link]
-- Mentor or collaborator notes: [link]
+- Introductions: each member's background and the role they will play in the project (see [Project Members](index.md#project-members))
+- Set the roadmap for the collaboration around the four [research objectives](index.md#research-objectives): LLM-synthesized ground truth, sensor harmonization, phenology retrieval, and continental mapping linked to SOC/GHG outcomes
+- Meeting notes are kept in the repository under `templates/meeting-notes/`
 
 ## Active Research
 
@@ -117,15 +108,6 @@ No pair of layers is redundant (largest correlation: `up_slope` / `term_drop`, r
 - Add ECOSTRESS LST with overpass-time normalisation as a second thermal channel
 - Repeat the pipeline on additional ROIs before scaling to regional tiles
 
-## Synthesis And Writing
-
-Landmark: PD-E Results and synthesis.
-
-- Results summary: [link]
-- Figures or tables: [link]
-- Manuscript, report, or product draft: [link]
-- Reuse and citation notes: [link]
-
 ## Outputs And Handoff
 
 Landmark: PD-F Outputs and handoff.
@@ -140,9 +122,5 @@ For outputs from the postdoc project, list the full authors or contributors for 
 ![Placeholder image representing final outputs and synthesis products][slot-outputs]{ .slot-square-image }
 
 --8<-- "_generated/slot_notes/outputs.md"
-
-### Outputs Gallery
-
---8<-- "_generated/galleries/child/outputs/index.md"
 
 --8<-- "_generated/image_slots.md"
