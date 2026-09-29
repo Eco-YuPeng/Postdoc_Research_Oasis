@@ -151,3 +151,56 @@ Rule for future pages: `index.md` uses `galleries/root/...`; every other page us
 - Scanned every `<img>` in the built site and confirmed each relative `src` resolves to a
   real file; the only unresolved entries are the absolute-path logos in `404.html`, which
   are correct once served.
+
+## 2026-09-29 — Update site to the v11 technical route; make Land Core data central to training and validation
+
+### Prompt
+
+Update the site to the latest v11 technical route. Emphasize the importance of Land Core data for
+training and validation. Remove text without real content, including landmark labels (PD-A, PD-B, ...).
+
+### Changes
+
+- `docs/index.md`
+  - Rewrote the abstract around two limits: detection signal (Xu et al. 2026) and label scale.
+  - Objectives rewritten with concrete content (three label tiers, v11 detector, recall by biomass class).
+  - Research Objectives reworded to v11 (user request): Objective 1 keeps the title "Synthesizing ground truths via LLMs" and
+    names Land Core points and extension on-farm reports as the two record sources (literature plots third);
+    Objective 3 is the v11 phenology retrieval validated on withheld Land Core counties and years.
+  - Added "Ground Truth: Why Land Core Data Matters": Land Core is presented as the Indiana ground-truth sample-point set
+    (per the user; the ISDA report name is deliberately not the headline). Labelled-unit comparison (this pilot 12 field-seasons;
+    OpTIS 961; Barnes 1,262; Ma et al. 47,709), tier table with measured size-screen results (PFI 44/132,
+    NE OFRN 9/56), separate training and validation roles, minimum content required of Land Core data.
+  - Replaced the template "Research Resources" table with a real resource/status table. Land Core row:
+    use permit to be discussed with Aria McLauchlan; not yet available.
+  - Removed template filler sentences and all `Landmark:` / PD-x labels.
+- `docs/work-plan.md`
+  - Progressive presentation (user request): Progress 1 and 2 are kept unchanged; new results are appended
+    as "in progress" entries at the bottom, not substituted for older ones.
+  - New Progress 3 (3-site ground-truth pilot: IN 12, IL 28, NE 18 field-seasons; AUC table) and Progress 4
+    (Indiana season windows + Sentinel-1). Numbers read from `CoverCrop_Fusion/ground_truth_runs/` on CyVerse
+    (`_summary/*.csv`, `IN_PENG2025/window_paired.csv`).
+  - New "Technical route (v11)": stages 0-4 with pass criteria, validation protocol, exclusions, risks.
+  - Active Research table gains the tier-2 screening and v11 rows; blocker line now names label scarcity.
+  - Removed all `Landmark:` lines.
+- Removed the landmark system from the site: references removed in
+  `docs/instructions/postdoc-project-lifecycle.md`, `docs/public-facing-site-guide.md`, `README.md`. The now-unreferenced file
+  `docs/instructions/postdoc-landmarks.md` is left for the owner to delete in GitHub (Delete file button).
+
+### Not verified
+
+- What Land Core actually holds (fields, years, states, practice attributes) and its terms of use.
+  landcore.org describes a soil-health policy and risk-modelling nonprofit and states no field-level holdings,
+  so the site lists the minimum content required rather than claiming any. Fill in real coverage once known.
+- v11 stage pass criteria are proposed thresholds, not results.
+- Land Core point count, years and terms are unknown to the site; the tier row says "to be confirmed".
+- Figures from CyVerse (`all_sites_summary.png`, `IN_PENG2025/figures/*.png`) are not yet in the repo: the
+  files must be copied from CyVerse to `docs/assets/images/results/` first. v11 notebook code was not found
+  in the CyVerse Data Store, so no v11 model result is shown.
+
+### Verification
+
+- `mkdocs build --strict --clean` passes; every `<img>` in the built site resolves; no PD-x, Landmark, or
+  unresolved snippet text remains in the rendered pages.
+- `scripts/check_template.py` and site_health still report the template pages removed earlier
+  (how-this-postdoc-project-works, esiil-resources, community-care); unchanged by this edit.
