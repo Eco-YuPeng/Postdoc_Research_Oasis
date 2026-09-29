@@ -36,7 +36,7 @@ Use these rules of thumb when deciding where to put something:
 
 - `docs/index.md` is the homepage for the public site.
 - `docs/work-plan.md` tracks milestones, meetings, outputs, and handoff plans for the postdoc project.
-- `docs/instructions/` contains practical instructions for GitHub, persistent storage, project lifecycle phases, and landmarks.
+- `docs/instructions/` contains practical instructions for GitHub, persistent storage, and project lifecycle phases.
 - `docs/resources/` contains reusable resource guides such as the Cloud Triangle, Cite and Reuse guidance, and existing postdoc resource pages.
 - `docs/assets/images/slots/` contains named image slots for the homepage and other shared visuals.
 - `docs/assets/images/process/` contains folder-driven process galleries that render automatically on the site.
