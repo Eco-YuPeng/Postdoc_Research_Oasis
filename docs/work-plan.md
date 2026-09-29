@@ -177,9 +177,10 @@ Each row is one field in one season; the label comes from the paper, and every u
 
 **Reading**
 
-- The absolute-greenness layers work at the Illinois site (AUC 0.84–0.94) and fall to 0.56–0.61 at the Indiana pilot fields.
+- The absolute-greenness layers score AUC 0.84–0.94 at the Illinois site and 0.56–0.61 at the Indiana pilot fields.
 - The relative NDVI feature (`best_ndvi_rel`) is the only one above 0.8 at all three sites. Treat the numbers as provisional: NE has 3 cover-crop units and IN 12 units in total.
 - `peak_win` and ET are at or below chance at IN and NE and weakest at IL → lowest priority for v11.
+- Caveat: IL and NE were dropped from the later Indiana-only runs (v8 onward) because their site quality was too poor, so their columns are a first pass, not evidence. Indiana is the reference site.
 - Unit counts of 12–28 per site are the limit here; the Land Core points are meant to remove it.
 
 ### Progress 4 · Indiana Season Windows and Sentinel-1 (in progress)
