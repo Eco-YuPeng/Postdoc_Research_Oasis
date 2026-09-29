@@ -67,5 +67,4 @@ Before sharing the site broadly, check that:
 Related pages:
 
 - [Postdoc Project Lifecycle](instructions/postdoc-project-lifecycle.md)
-- [Postdoc Project Landmarks](instructions/postdoc-landmarks.md)
 - [Cite and Reuse](resources/cite-and-reuse.md)
