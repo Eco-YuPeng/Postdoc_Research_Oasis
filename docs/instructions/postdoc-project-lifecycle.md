@@ -17,7 +17,6 @@ Useful actions:
 
 Good kickoff documentation answers: What are we trying to understand, who is involved, what do we need access to, and where will the shared work live?
 
-Related landmarks: PD-A People and roles, PD-B Question and scope, PD-C Data and access.
 
 ## First In-Person Meeting Or First Major Working Session
 
@@ -34,7 +33,6 @@ Useful actions:
 
 The goal is not to finish the science. The goal is to leave enough structure that collaborators can keep working after the session ends.
 
-Related landmarks: PD-B Question and scope, PD-C Data and access, PD-D Methods and workflows.
 
 ## Between Meetings
 
@@ -51,7 +49,6 @@ Useful actions:
 
 Start each work session by pulling the latest changes. End each work session by pushing useful code or notes and saving large outputs to persistent storage.
 
-Related landmarks: PD-C Data and access, PD-D Methods and workflows, PD-E Results and synthesis.
 
 ## Second In-Person Meeting Or Synthesis Session
 
@@ -68,7 +65,6 @@ Useful actions:
 
 The strongest synthesis notes separate observations, interpretation, uncertainty, and next steps.
 
-Related landmarks: PD-E Results and synthesis, PD-F Outputs and handoff.
 
 ## Wrap-Up And Handoff
 
@@ -86,10 +82,8 @@ Useful actions:
 
 Before wrap-up, check that the repository explains what was done, where the data lives, how outputs were produced, and how others should cite or reuse the work.
 
-Related landmarks: PD-F Outputs and handoff.
 
 ## Lifecycle Links
 
-- [Postdoc Project Landmarks](postdoc-landmarks.md)
 - [Cloud Triangle](../resources/cloud-triangle.md)
 - [Cite and Reuse](../resources/cite-and-reuse.md)
