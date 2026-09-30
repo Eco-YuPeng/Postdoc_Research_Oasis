@@ -204,3 +204,11 @@ training and validation. Remove text without real content, including landmark la
   unresolved snippet text remains in the rendered pages.
 - `scripts/check_template.py` and site_health still report the template pages removed earlier
   (how-this-postdoc-project-works, esiil-resources, community-care); unchanged by this edit.
+
+## 2026-09-30 — Add CyVerse figures to Progress 3–4
+
+- User uploaded four figures to `docs/assets/images/results/` (`all_sites_summary.png`, `trajectories_IN_PENG2025.png`, `qc_IN_PENG2025.png`, `layer_diagnostics_IN_PENG2025.png`), copied from CyVerse `CoverCrop_Fusion/ground_truth_runs/`.
+- `docs/work-plan.md`: Figure 3 in Progress 3; Figures 4–6 in Progress 4, each with a caption stating what is plotted. Values quoted in captions are read from the figures or from the CSVs on CyVerse; the 61% / 84% / 79% threshold shares are read off the plot.
+- Progress 3: added a note that IL and NE were dropped from later Indiana-only runs (site quality), so their columns are a first pass.
+- Progress 4 corrected after viewing the figures: 2022-23 was an interseeded season (cover crop already established at harvest), and its whole Nov–May window is positive (about +0.03 to +0.15); the earlier "spring-only detector unreliable" wording applies to the two fall-drilled seasons only.
+- `all_sites_summary.png` shows the Indiana site only despite its name.
