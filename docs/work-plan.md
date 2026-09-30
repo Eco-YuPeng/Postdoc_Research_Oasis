@@ -175,8 +175,13 @@ Each row is one field in one season; the label comes from the paper, and every u
 | `best_ndvi_rel` | 0.81 | 0.86 | 0.96 |
 | ET (best window) | 0.61 | 0.53 | — |
 
+![Indiana pilot fields: NDVI map, field-mean NDVI series and layer differences](assets/images/results/all_sites_summary.png)
+
+*Figure 3. Indiana pilot fields (v8 run, three seasons, 8-day windows). Left: NDVI on 2024-05-16 with the cover-crop field (CCNT) and the no-cover-crop control (NT) outlined. Centre: field-mean NDVI, 2021-09 → 2024-07; blue bands = detection windows, red dashes = termination. Right: layer value in the cover-crop field minus the control, per season (green = cover crop higher, pink = lower).*
+
 **Reading**
 
+- In the three seasons of Figure 3, `up_slope` is higher in the cover-crop field every season and ET in spring is lower every season; `n_green`, `ndvi_int` and `spring_rel` are higher in two of three.
 - The absolute-greenness layers score AUC 0.84–0.94 at the Illinois site and 0.56–0.61 at the Indiana pilot fields.
 - The relative NDVI feature (`best_ndvi_rel`) is the only one above 0.8 at all three sites. Treat the numbers as provisional: NE has 3 cover-crop units and IN 12 units in total.
 - `peak_win` and ET are at or below chance at IN and NE and weakest at IL → lowest priority for v11.
@@ -194,8 +199,21 @@ Each row is one field in one season; the label comes from the paper, and every u
 | 2022-23 | **post-harvest** | **+0.060** | **20 / 20** | **+0.49** (30 / 32) |
 | 2023-24 | spring | −0.026 | 0 / 9 | −0.18 |
 
-- The clear separation is in the post-harvest window (2022-23): cover crop is greener on every same-day pair and Sentinel-1 VH backscatter is higher. This is the window a fall-seeded cover crop should show in.
-- Spring differences are ≤ 0.03 NDVI and change sign between years, so a spring-only detector would not be reliable on these fields.
+- The clear separation is in the post-harvest window (2022-23): cover crop is greener on every same-day pair and Sentinel-1 VH backscatter is higher. In that season the cover crop was interseeded into V-stage corn, so it is already established at harvest.
+- In the two fall-drilled seasons (2021-22, 2023-24) the spring difference is ≤ 0.03 NDVI and changes sign. In the interseeded season the difference stays positive through the whole November–May window, roughly +0.03 to +0.15 (Figure 4). Detectability therefore depends on seeding method and window, not on the season alone.
+
+![Field-mean NDVI per season, cover crop versus control, with difference](assets/images/results/trajectories_IN_PENG2025.png)
+
+*Figure 4. Field-mean NDVI per season, cover-crop field (CCNT) vs control (NT). Blue = detection window, green dashes = seeding, red dashes = termination, dots = observed composites (lines include interpolation). Bottom row: cover crop minus control. 2021-22 and 2023-24: fall drilled after soybean; 2022-23: interseeded into V-stage corn.*
+
+![NDVI and NDTI maps before termination, 2023-24](assets/images/results/qc_IN_PENG2025.png)
+
+*Figure 5. Season 2023-24, three weeks before termination. NDVI 2024-04-22 (left), summer NDVI 2023-07-17 (centre), NDTI 2024-04-22 (right). In this fall-drilled season the cover-crop field is not visibly greener than the control.*
+
+![n_green per pixel and per field, and threshold sensitivity, three seasons](assets/images/results/layer_diagnostics_IN_PENG2025.png)
+
+*Figure 6. `n_green` per pixel (left) and per CSB field (centre) for each detection window, and the share of cropland whose window-maximum NDVI exceeds a threshold (right; dashed = 0.30). At 0.30 roughly 61%, 84% and 79% of cropland passes in 2021-22, 2022-23 and 2023-24 (read from the plot), so 0.30 does not separate cover crop from other green cover in spring windows; the threshold stays provisional.*
+
 - Sentinel-1 VH differs by ≤ 0.5 dB even in the best window → whether it adds to optical is a v11 stage-2 question, not a result yet.
 - Next: repeat the window comparison on Land Core points, where each window has many more pairs.
 
