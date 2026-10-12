@@ -212,3 +212,21 @@ training and validation. Remove text without real content, including landmark la
 - Progress 3: added a note that IL and NE were dropped from later Indiana-only runs (site quality), so their columns are a first pass.
 - Progress 4 corrected after viewing the figures: 2022-23 was an interseeded season (cover crop already established at harvest), and its whole Nov–May window is positive (about +0.03 to +0.15); the earlier "spring-only detector unreliable" wording applies to the two fall-drilled seasons only.
 - `all_sites_summary.png` shows the Indiana site only despite its name.
+
+## 2026-10-12 — Replace Land Core with Cover Crop and Tillage Transect Reports; restore the step 1–4 roadmap image
+
+### Prompt
+
+Replace every Land Core data reference on the site with Cover Crop and Tillage Transect Reports; keep the earlier step 1 2 3 4 research overview figure.
+
+### Changes
+
+- `docs/index.md`: abstract, Objectives 1 and 3, the Ground Truth section (heading now "Ground Truth: Cover Crop and Tillage Transect Reports", anchor `#ground-truth-cover-crop-and-tillage-transect-reports`), tier-3 row and Research Resources row. Land Core and the permit note for Aria McLauchlan are removed: per the project notes the transect data are Indiana State Department of Agriculture data, not Land Core's, so the access note now says public release is county-level only and point-level data are to be requested from the State.
+- `docs/index.md`: restored `![research roadmap][slot-analysis]` after the Research Objectives. It resolves to `docs/assets/images/slots/analysis/analysisRoadmap.png` (the step 1–4 figure and deliverables), which was dropped in the 2026-09-29 rewrite.
+- `docs/work-plan.md`: all Land Core mentions replaced; the links to the Ground Truth section updated.
+- Running text after the first mention uses "transect points" for the point-level data.
+
+### Not verified
+
+- Point count, years, fields recorded and terms of the point-level transect data; the site says "to be confirmed". Public county-level reports were checked on the ISDA page (2019 fall); point-level data were not.
+- Earlier log entries above still say Land Core; they are history and were not rewritten.
