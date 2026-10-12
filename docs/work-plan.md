@@ -19,7 +19,7 @@
 
 | Workstream | Objective | Repo | Status |
 |---|---|---|---|
-| Automated ground-truth labels | 1 — LLM synthesis of Land Core, on-farm and literature records | [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC) | Pipeline built; first end-to-end run next |
+| Automated ground-truth labels | 1 — LLM synthesis of Cover Crop and Tillage Transect Reports, on-farm and literature records | [LLM_AutoExtracting_CC](https://github.com/Eco-YuPeng/LLM_AutoExtracting_CC) | Pipeline built; first end-to-end run next |
 | HLS × ECOSTRESS fusion | 2 — sensor harmonization | [firerx_ml_CC](https://github.com/Eco-YuPeng/firerx_ml_CC) · [notebook](https://github.com/Eco-YuPeng/firerx_ml_CC/blob/main/app_py/CoverCrop_Fusion_v5_2.ipynb) | Pilot cube + phenology layers done (Progress 2) |
 | On-farm report screening | 1 — labels, tier 2 | — | PFI, NE OFRN, Ohio triaged; field geolocation running |
 | Ground-truth pilot, 3 sites | 1 + 3 — label test of the layers | [firerx_ml_CC](https://github.com/Eco-YuPeng/firerx_ml_CC) | Running (Progress 3–4); results below |
@@ -27,7 +27,7 @@
 
 - Compute: CyVerse (JupyterLab, VS Code); NASA Earthdata via `earthaccess`; Claude models via CyVerse AI-VERDE
 - Storage: CyVerse Data Store `CoverCrop_Fusion/` (fused cube, caches, figures)
-- Blocker: labels. The Indiana pilot has 12 field-seasons; the greenness threshold is provisional until [Land Core](index.md#ground-truth-why-land-core-data-matters) and tier-2 fields are available
+- Blocker: labels. The Indiana pilot has 12 field-seasons; the greenness threshold is provisional until the [Cover Crop and Tillage Transect Reports](index.md#ground-truth-cover-crop-and-tillage-transect-reports) and tier-2 fields are available
 
 ### Technical route (v11)
 
@@ -39,7 +39,7 @@ v8–v10 (optical + land surface temperature + Ma et al. baseline + climate, Ind
 |---|---|---|---|
 | 0. Lidar probe | Find 3DEP flight dates for the two Indiana fields; compute above-ground return fractions and first-return intensity (1064 nm) | Flight date 15 Mar–20 May, and cover-crop vs control difference larger than within-field variation; otherwise drop lidar | 1–2 days |
 | 1. Lidar label library | Indiana CSB fields with flights in that window and corn/soy CDL; label green cover / bare-residue / uncertain, checked against HLS NDVI within ±5 days | Winter wheat scores as green; county positive share matches Census in magnitude | 1–2 weeks |
-| 2. v11 model | v10 seasonal table + Sentinel-1 VH and coherence by month (6-day revisit restored after Sentinel-1C); random forest. **Train** on lidar labels, tier 1–2 fields and Land Core points; **validate** on withheld Land Core counties and years | Sentinel-1 fills the late-November-seeding gap; Ma et al. 144 features still beat v8 layers at scale | 2–3 weeks |
+| 2. v11 model | v10 seasonal table + Sentinel-1 VH and coherence by month (6-day revisit restored after Sentinel-1C); random forest. **Train** on lidar labels, tier 1–2 fields and transect points; **validate** on withheld transect-report counties and years | Sentinel-1 fills the late-November-seeding gap; Ma et al. 144 features still beat v8 layers at scale | 2–3 weeks |
 | 3. County proportions | Add county cover-crop area (Census 2017, 2022; excludes CRP) as a proportion loss; compare with OpTIS | Extrapolates to non-Census years | 2–4 weeks, parallel with 2 |
 | 4. Nitrogen layer (optional) | Red-edge ΔRE on detected fields, calibrated to [Thieme et al. 2025](https://pubs.usgs.gov/publication/70268813) (kg N/ha) | Relative values only until local biomass sampling exists | — |
 
@@ -51,7 +51,7 @@ v8–v10 (optical + land surface temperature + Ma et al. baseline + climate, Ind
 
 ### Progress 1 · Automated Extraction of Field Ground-Truth Labels
 
-**Goal** — synthesize labelled fields (where · when · which species · which cash crop) from Land Core records, extension on-farm research reports (PFI, NE OFRN, Ohio) and published field studies, for training and validating the v11 detector. Published studies are the first test corpus because their answers can be checked.
+**Goal** — synthesize labelled fields (where · when · which species · which cash crop) from the Cover Crop and Tillage Transect Reports, extension on-farm research reports (PFI, NE OFRN, Ohio) and published field studies, for training and validating the v11 detector. Published studies are the first test corpus because their answers can be checked.
 
 **Pipeline** (one report or record in → rows out)
 
@@ -86,7 +86,7 @@ v8–v10 (optical + land surface temperature + Ma et al. baseline + climate, Ind
 - ⬜ First end-to-end run on one paper → field-by-field review
 - ⬜ Batch the ~94-paper corpus (auto-download open access; list paywalled for manual retrieval)
 - ⬜ Apply the same pipeline to extension on-farm reports (tier 2: PFI, NE OFRN, Ohio) — screening in [Active Research](#active-research)
-- ⬜ Map Land Core points to the label schema once the use permit is agreed (tier 3)
+- ⬜ Map transect points to the label schema once the data agreement with the Indiana State Department of Agriculture is in place (tier 3)
 - ⬜ Merge with hand-built tables → publish labelled dataset with confidence tiers
 - ⬜ Use labels to tune the greenness threshold in Progress 2
 
@@ -186,7 +186,7 @@ Each row is one field in one season; the label comes from the paper, and every u
 - The relative NDVI feature (`best_ndvi_rel`) is the only one above 0.8 at all three sites. Treat the numbers as provisional: NE has 3 cover-crop units and IN 12 units in total.
 - `peak_win` and ET are at or below chance at IN and NE and weakest at IL → lowest priority for v11.
 - Caveat: IL and NE were dropped from the later Indiana-only runs (v8 onward) because their site quality was too poor, so their columns are a first pass, not evidence. Indiana is the reference site.
-- Unit counts of 12–28 per site are the limit here; the Land Core points are meant to remove it.
+- Unit counts of 12–28 per site are the limit here; the Cover Crop and Tillage Transect Reports points are meant to remove it.
 
 ### Progress 4 · Indiana Season Windows and Sentinel-1 (in progress)
 
@@ -215,5 +215,5 @@ Each row is one field in one season; the label comes from the paper, and every u
 *Figure 6. `n_green` per pixel (left) and per CSB field (centre) for each detection window, and the share of cropland whose window-maximum NDVI exceeds a threshold (right; dashed = 0.30). At 0.30 roughly 61%, 84% and 79% of cropland passes in 2021-22, 2022-23 and 2023-24 (read from the plot), so 0.30 does not separate cover crop from other green cover in spring windows; the threshold stays provisional.*
 
 - Sentinel-1 VH differs by ≤ 0.5 dB even in the best window → whether it adds to optical is a v11 stage-2 question, not a result yet.
-- Next: repeat the window comparison on Land Core points, where each window has many more pairs.
+- Next: repeat the window comparison on transect points, where each window has many more pairs.
 
